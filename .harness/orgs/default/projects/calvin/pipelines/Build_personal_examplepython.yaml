@@ -54,6 +54,8 @@ pipeline:
                   spec:
                     shell: Sh
                     command: hcli cov upload --file=lcov.info
+                    envVariables:
+                      CI_ENABLE_HCLI_FOR_TESTS: "true"
               - step:
                   type: Run
                   name: Upload coverage to Codecov -- arg token
@@ -61,3 +63,5 @@ pipeline:
                   spec:
                     shell: Sh
                     command: codecovcli --verbose do-upload -t "$CODECOV_TOKEN" --fail-on-error
+                    envVariables:
+                      CODECOV_TOKEN: <+secrets.getValue("Codecov_Upload_Token")>
