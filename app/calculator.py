@@ -16,3 +16,6 @@ class Calculator:
 
     def test(x):
         return x
+
+    def square(x):
+        return x * x
